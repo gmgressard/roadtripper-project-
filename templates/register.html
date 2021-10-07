@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Log In {% endblock %}
+
+{% block body %} 
+    <h1 id= intro>Register New User</h1> 
+    <div>
+        <form id=register action="" method="POST">
+            <label>Username:</label><br>
+            <input id= username type="text" name="username"><br><br>
+            <label>Email:</label><br>
+            <input id=email type="email" name="email"><br><br>
+            <label>Password:</label><br>
+            <input id=password type="password" name="password"><br><br>
+            <label>First Name:</label><br>
+            <input id=fname type="text" name="fname"><br><br>
+            <label>Last Name:</label><br>
+            <input id=lname type="text" name="lname"><br><br>
+            <input type="submit" value="Create Account">
+        </form>
+    </div>
+
+{% endblock %}
