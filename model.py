@@ -37,7 +37,7 @@ class HikeInfo(db.Model):
                         primary_key=True, 
                         autoincrement=True)
     hike_name = db.Column(db.String(30))
-    coordinates = db.Column(db.String(50))
+    coordinates = db.Column(db.Integer)
     state = db.Column(db.String(15))
     city = db.Column(db.String(30))
     national_park = db.Column(db.String(30))

@@ -2,18 +2,17 @@
 {% block title %} Log In {% endblock %}
 
 {% block body %} 
-    <h1 id= intro>Welcome to RoadTripper!</h1> 
+    <h1 id= intro >Welcome to RoadTripper!</h1> 
     <div>
-        <!-- # means stay on same page , using post because we are posting info if there was get then form would be filled with info we get from the server-->
-        <form id =login action="/login" method="POST"> 
+        <form id ='login' action='/login' method='POST'> 
             <label>Username:</label><br>
-            <input id= username type="text" name="username"><br><br>
-            <label>Email:</label><br>
-            <input id=email type="email" name="email"><br><br>
+            <input id= 'username' type='text' name='username'><br><br>
             <label>Password:</label><br>
-            <input id=password type="password" name="password"><br><br>
-            <input type="submit" value="Login">
+            <input id= 'password' type='password' name='password'><br><br>
+            <input type='submit' value='Login'><br><br>
+            <a href='/register'>Create Account</a>
         </form>
+        
     </div>
 
 {% endblock %}

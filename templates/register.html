@@ -2,9 +2,9 @@
 {% block title %} Log In {% endblock %}
 
 {% block body %} 
-    <h1 id= intro>Register New User</h1> 
+    <h1 id= intro>Create New Account</h1> 
     <div>
-        <form id=register action="" method="POST">
+        <form id=register action="/register" method="POST">
             <label>Username:</label><br>
             <input id= username type="text" name="username"><br><br>
             <label>Email:</label><br>
@@ -15,7 +15,7 @@
             <input id=fname type="text" name="fname"><br><br>
             <label>Last Name:</label><br>
             <input id=lname type="text" name="lname"><br><br>
-            <input type="submit" value="Create Account">
+            <input type="submit" action ="/createuser" value="Create Account">
         </form>
     </div>
 

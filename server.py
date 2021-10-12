@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, flash
 from model import connect_to_db
 import crud
 
 
 app = Flask(__name__)  
 
-app.secret_key = "^$hgj%^#^4#5&%34$#&%$w2H*5n3"
+app.secret_key = '^$hgj%^#^4#5&%34$#&%$w2H*5n3'
 
 
 @app.route('/')
@@ -14,60 +14,75 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login', methods=['POST','GET'])
 def login_user():
     """login page"""
-    user = request.form["username"]
-    email = request.form["email"]
+    #get username and password input
+    user = request.form['username']
     password = request.form['password']
 
-    # if get_user(username) == True:
-    #     session["email"]
-    if request.method == "POST":
-        session["user"] = user
+    #validate that it is in db
+    user = crud.get_user(username=user,password=password) 
+    print(user)
+
+    #validate username and password are connected 
+    #create session
+    #login to profile 
+    if user:
+        session["user_id"] = user.user_id
+        session["username"] = user.username 
         return redirect("/profile")
-    else:
+    else: 
         return render_template("index.html")
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET','POST'])
 def homepage():
     """homepage profile for user"""
-    if "user" in session:
+   #check if user is logged in 
+   #if yes, show profile 
+   #if no, go to login page 
+    
+    if "user_id" in session: #key user id in session dic line 32
         return render_template("profile.html")
     else:
-        alert("You are not logged in.")
-        return redirect("/login")
+        flash('You are not logged in.')
+        return redirect('/')
+    # return render_template('test.html')
 
 
-# @app.route("/register")
-# def registration():
-#     return render_template("register.html")
-#     return redirect("/createuser")
+@app.route('/register')
+def registration():
+    return render_template('register.html')
+    return redirect('/createuser')
 
 
-# @app.route("/createuser")
-# def create_user():
-#     """create new user and save to db"""
+@app.route('/createuser', methods = ['POST','GET'])
+def create_new_user():
+    """create new user and save to db"""
 
-#     user = request.form["username"]
-#     email = request.form["email"]
-#     password = request.form['password']
-#     fname = request.form['fname']
-#     lname = request.form['lname']
+    #get user input for creating new account
+    user = request.form['username']
+    email = request.form['email']
+    password = request.form['password']
+    fname = request.form['fname']
+    lname = request.form['lname']
 
-#     if user in get_user(username):
-#         return flash("Already in database")
-#         return redirect("/")
-#     else:
-#         new_user = create_user(username=username, password=password, email=email)
+    #check if user already in db
+    db_user = crud.get_user(username=user,password=password)
 
-#     return redirect("/")
+    #if user in db, go back to log in
+    #if not, add user to db and go back to log in
+    if db_user in user_info:
+        flash('Already in database')
+    else:
+        crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
+        return redirect('/')
 
 
 # @app.route('/logout')
 # def logout():
-#     session.pop("user", None)
+#     session.pop('user', None)
 #     return redirect('/login')
 
 
