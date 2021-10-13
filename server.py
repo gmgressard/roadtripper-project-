@@ -75,20 +75,26 @@ def create_new_user():
         # return redirect('/')
 
     #check if user already in db
-    db_user = crud.get_user(username=user,password=password)
-    print("*********")
-    print(db_user)
-    #if user in db, go back to log in
-    #if not, add user to db and go back to log in
-    if db_user is None:
+    db_user = crud.get_user(username=user,password=password) 
+    
+    # #if user in db, go back to log in
+    # #if not, add user to db and go back to log in
+
+    if db_user is not None:
         flash('Already in database')
-        redirect('/')
+        return redirect('/')
     else: 
         user = crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
-        print("*********")
-        print(user)
-        print("*********")
         return redirect('/')
+
+
+
+# @app.route('/newhike')
+# def create_new_hike():
+#     """list states > NP"""
+#     return render_template('hikes.html',
+#                             hikes=hikes
+#                             states=states)
 
 
 # @app.route('/logout')

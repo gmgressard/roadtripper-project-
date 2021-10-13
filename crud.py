@@ -18,7 +18,7 @@ def get_user(username,password):
     """check if user in db"""
 
     user = User.query.filter_by(username = username, password=password).first() #one or first
-    return user 
+    return user
 
         
 

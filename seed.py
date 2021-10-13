@@ -21,7 +21,7 @@ with open('NP_data.csv', newline = '') as csvfile:
     reader = csv.DictReader(csvfile)
     # reader = csv.reader(csvfile)
 
-    # hikes_in_db = []
+    hikes_in_db = []
 
     for row in reader: #row is a dic 
         hike_name = row['name'] #string
@@ -35,7 +35,7 @@ with open('NP_data.csv', newline = '') as csvfile:
 
         hike_info = crud.create_hike(hike_name=hike_name,coordinates=coordinates,state=state,city=city,national_park=national_park,length=length,difficulty_rating=difficulty_rating,avg_rating=avg_rating)
         hikes_in_db.append(hike_info)
-    s
+    
     print("*" * 40)
     print(len(hikes_in_db))
     print("*" * 40)

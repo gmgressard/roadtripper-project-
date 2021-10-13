@@ -36,11 +36,11 @@ class HikeInfo(db.Model):
     hike_id = db.Column(db.Integer, 
                         primary_key=True, 
                         autoincrement=True)
-    hike_name = db.Column(db.String(80))
-    coordinates = db.Column(db.String(40))
-    state = db.Column(db.String(15))
-    city = db.Column(db.String(50))
-    national_park = db.Column(db.String(50))
+    hike_name = db.Column(db.String)
+    coordinates = db.Column(db.String)
+    state = db.Column(db.String)
+    city = db.Column(db.String)
+    national_park = db.Column(db.String)
     length = db.Column(db.Float)
     difficulty_rating = db.Column(db.Integer)
     avg_rating = db.Column(db.Float)
