@@ -32,7 +32,6 @@ def create_hike(hike_name,coordinates,state,city,national_park,length,difficulty
     db.session.add(hike_info)
     db.session.commit()
 
-    return hike_info
 
 
 def past_hike(date):

@@ -33,6 +33,7 @@ def login_user():
         session["username"] = user.username 
         return redirect("/profile")
     else: 
+        flash("No user found, please create account")
         return render_template("index.html")
 
 
@@ -48,7 +49,6 @@ def homepage():
     else:
         flash('You are not logged in.')
         return redirect('/')
-    # return render_template('test.html')
 
 
 @app.route('/register')
@@ -68,15 +68,26 @@ def create_new_user():
     fname = request.form['fname']
     lname = request.form['lname']
 
+    # user = crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
+    # print("*********")
+    # print(user)
+    # print("*********")
+        # return redirect('/')
+
     #check if user already in db
     db_user = crud.get_user(username=user,password=password)
-
+    print("*********")
+    print(db_user)
     #if user in db, go back to log in
     #if not, add user to db and go back to log in
-    if db_user in user_info:
+    if db_user is None:
         flash('Already in database')
-    else:
-        crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
+        redirect('/')
+    else: 
+        user = crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
+        print("*********")
+        print(user)
+        print("*********")
         return redirect('/')
 
 
