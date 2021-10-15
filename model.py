@@ -47,8 +47,8 @@ class HikeInfo(db.Model):
 
     def __repr__(self):
         """Show hike info"""
-        return f'<hike name:{hike_name} national park:{national_park}'
-
+        return f'<hike name:{self.hike_name} national park:{self.national_park} state:{self.state}>'
+        
 
 class PastHike(db.Model):
     """Past hike information saved"""
@@ -69,7 +69,7 @@ class PastHike(db.Model):
 
     def __repr__(self):
         """Show info about past hike"""
-        return f'<hike:{hike_id} date:{date}>'
+        return f'<hike:{self.hike_id} date:{self.date}>'
 
 
 
@@ -91,7 +91,7 @@ class PlannedHike(db.Model):
 
     def __repr__(self):
         """Show info about planned hike"""
-        return f'<planned_hike:{planned_hike_id} user is:{uesr_id}>'
+        return f'<planned_hike:{self.planned_hike_id} user is:{self.uesr_id}>'
 
 
 

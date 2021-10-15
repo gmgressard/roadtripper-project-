@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} Hikes {% endblock %}
+
+{% block body %} 
+<h1>Choose a National Park:</h1>
+    {% for national_park in national_parks %}
+        <ul><a href = ''>{{national_park.national_park}} {{national_park.hike_name}}</a></ul>
+    {% endfor %}
+{% endblock %}

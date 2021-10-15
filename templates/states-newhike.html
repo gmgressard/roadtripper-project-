@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Hikes {% endblock %}
+
+{% block body %} 
+    <h1>Let's Find a Hike</h1> 
+    <form action= '/nationalparks'>
+    <label for="state">Choose a state:</label>
+
+    <select name="state" id="state">
+    {% for state in states %}
+      <option value='{{state}}'>{{state}}</option>
+    {% endfor %}  
+    <input type = "submit">
+    </form>
+    </select>
+    
+{% endblock %}

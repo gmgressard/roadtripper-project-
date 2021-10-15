@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, session, redirect, flash
 from model import connect_to_db
-import crud
+import crud, model
+
+
+from jinja2 import StrictUndefined #gives errors for undefined variables 
 
 
 app = Flask(__name__)  
@@ -44,8 +47,8 @@ def homepage():
    #if yes, show profile 
    #if no, go to login page 
     
-    if "user_id" in session: #key user id in session dic line 32
-        return render_template("profile.html")
+    if 'user_id' in session: #key user id in session dic line 32
+        return render_template('profile.html')
     else:
         flash('You are not logged in.')
         return redirect('/')
@@ -53,7 +56,7 @@ def homepage():
 
 @app.route('/register')
 def registration():
-    return render_template('register.html')
+    return render_template('register-user.html')
     return redirect('/createuser')
 
 
@@ -68,15 +71,9 @@ def create_new_user():
     fname = request.form['fname']
     lname = request.form['lname']
 
-    # user = crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
-    # print("*********")
-    # print(user)
-    # print("*********")
-        # return redirect('/')
-
     #check if user already in db
     db_user = crud.get_user(username=user,password=password) 
-    
+
     # #if user in db, go back to log in
     # #if not, add user to db and go back to log in
 
@@ -88,13 +85,41 @@ def create_new_user():
         return redirect('/')
 
 
+@app.route('/newhike')
+def create_new_hike():
+    """list states > NP"""
+    
+    states = crud.get_states()
 
-# @app.route('/newhike')
-# def create_new_hike():
-#     """list states > NP"""
-#     return render_template('hikes.html',
-#                             hikes=hikes
-#                             states=states)
+    return render_template('states-newhike.html', states=states)
+
+
+@app.route('/nationalparks')
+def national_parks():
+    """get national parks from state"""
+    
+    chosen_state = request.args.get('state')
+
+    national_parks = crud.get_national_parks_hikes(chosen_state)
+    
+    return render_template('nat-parks-newhike.html', state=chosen_state, national_parks=national_parks)
+    
+
+app.route('/hikes')
+def hikes():
+    """get hikes from national park"""
+
+    chosen_national_park = request.args.get('national_park')
+
+    hikes = crud.get_national_parks.hikes(chosen_national_park)
+
+    return render_template('hikes-newhike.html', national_park=chosen_national_park, hikes=hikes)
+
+
+
+# @app.route('/pasthikes')
+# def view_past_hikes():
+#     return render_template('past-hike.html')
 
 
 # @app.route('/logout')
