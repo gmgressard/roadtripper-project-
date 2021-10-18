@@ -2,8 +2,17 @@
 {% block title %} Hikes {% endblock %}
 
 {% block body %} 
-<h1>Choose a National Park:</h1>
+   
+    <h1>Let's Find a Hike</h1> 
+    <form action= '/hikes'>
+    <label for="national_park">Choose a National Park to Visit:</label>
+
+    <select name="national_park" id="national_park">
     {% for national_park in national_parks %}
-        <ul><a href = ''>{{national_park.national_park}} {{national_park.hike_name}}</a></ul>
-    {% endfor %}
+      <option value='{{national_park}}'>{{national_park}}</option>
+    {% endfor %}  
+    <input type = "submit">
+    </form>
+    </select>
+    
 {% endblock %}

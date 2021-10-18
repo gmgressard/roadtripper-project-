@@ -30,17 +30,12 @@ def create_hike(hike_name,coordinates,state,city,national_park,length,difficulty
     db.session.add(hike_info)
     db.session.commit()
 
+
 def get_np_and_state():
     """return all state, np connected"""
 
     np_states= db.session.query(HikeInfo.state,HikeInfo.national_park).all()
     print(np_states)
-    
-def get_national_parks_hikes(state):
-    """Return all national parks"""
-
-    hikes= HikeInfo.query.filter_by(state=state).all()
-    return hikes
     
 
 def get_states():
@@ -56,9 +51,33 @@ def get_states():
     sorted_states_list = sorted(states_list)
     
     return sorted_states_list
-   
 
-def past_hike(date):
+
+def get_national_parks(state):
+    """get all national parks for chosen state"""
+
+    national_parks= HikeInfo.query.filter_by(state=state).all()
+    
+    nat_parks_set = set()
+
+    for national_park in national_parks:
+        nat_parks_set.add(national_park.national_park)
+        
+    nat_parks_list = list(nat_parks_set)
+    sorted_nat_parks = sorted(nat_parks_list)
+
+    return sorted_nat_parks
+    
+
+def get_hikes(national_park):
+    """get all hikes for given state"""
+
+    national_parks= HikeInfo.query.filter_by(national_park=national_park).all()
+    
+    return national_parks
+
+
+def save_past_hike(date):
     """look at past hike"""
 
     past_hike_info = PastHike(date=date)
@@ -69,7 +88,7 @@ def past_hike(date):
     return past_hike_info
 
 
-def planned_hike():
+def make_planned_hike():
 
     planned_hike = PlannedHike()
 

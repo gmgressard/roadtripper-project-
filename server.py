@@ -100,20 +100,28 @@ def national_parks():
     
     chosen_state = request.args.get('state')
 
-    national_parks = crud.get_national_parks_hikes(chosen_state)
+    national_parks = crud.get_national_parks(chosen_state)
     
+
     return render_template('nat-parks-newhike.html', state=chosen_state, national_parks=national_parks)
     
 
-app.route('/hikes')
+@app.route('/hikes')
 def hikes():
     """get hikes from national park"""
 
     chosen_national_park = request.args.get('national_park')
 
-    hikes = crud.get_national_parks.hikes(chosen_national_park)
+    hikes = crud.get_hikes(chosen_national_park)
 
     return render_template('hikes-newhike.html', national_park=chosen_national_park, hikes=hikes)
+
+
+
+
+
+
+
 
 
 

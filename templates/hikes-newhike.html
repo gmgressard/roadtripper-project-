@@ -4,6 +4,6 @@
 {% block body %} 
 <h1>Choose a Hike:</h1>
     {% for hike in hikes %}
-        <ul><a href = ''>{{hike.hike_name}}</a></ul>
+        <ul><a href = '' >Trail Name: {{hike.hike_name}}     Length : {{hike.length}}    Difficulty: {{hike.difficulty_rating}}    Average User Rating: {{hike.avg_rating}}</a></ul>
     {% endfor %}
 {% endblock %}
