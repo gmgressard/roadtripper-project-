@@ -117,10 +117,16 @@ def hikes():
     return render_template('hikes-newhike.html', national_park=chosen_national_park, hikes=hikes)
 
 
+# @app.route('/map')
+# def map():
+#     return render_template('maps.html')
 
 
+@app.route('/savetrip')
+def save_hike():
+    """save trip to user id and view on past hikes"""
 
-
+    return render_template(saved-hikes.html)    
 
 
 

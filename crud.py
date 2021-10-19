@@ -77,7 +77,7 @@ def get_hikes(national_park):
     return national_parks
 
 
-def save_past_hike(date):
+def save_hike(date):
     """look at past hike"""
 
     past_hike_info = PastHike(date=date)
@@ -88,14 +88,14 @@ def save_past_hike(date):
     return past_hike_info
 
 
-def make_planned_hike():
+# def make_planned_hike():
 
-    planned_hike = PlannedHike()
+#     planned_hike = PlannedHike()
 
-    db.session.add(planned_hike)
-    db.session.commit()
+#     db.session.add(planned_hike)
+#     db.session.commit()
 
-    return planned_hike
+#     return planned_hike
 
 
 
