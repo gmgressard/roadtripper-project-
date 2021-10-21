@@ -47,7 +47,7 @@ class HikeInfo(db.Model):
 
     def __repr__(self):
         """Show hike info"""
-        return f'<hike name:{self.hike_name} national park:{self.national_park} state:{self.state} city:{self.city} length: {self.length} difficulty_rating: {self.difficulty_rating} avg_rating: {self.avg_rating}>'
+        return f'<hike name:{self.hike_name} national park:{self.national_park} state:{self.state} city:{self.city} length: {self.length} difficulty_rating: {self.difficulty_rating} avg_rating: {self.avg_rating} coordinates {self.coordinates}>'
         
 
 class PastHike(db.Model):

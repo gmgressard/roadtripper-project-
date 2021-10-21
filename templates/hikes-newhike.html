@@ -14,11 +14,14 @@
 {% block body %} 
 <main>
     <section class="map">
-      <div id="map"></div>
+      <div id="map" data-lng={{lng}} data-lat={{lat}}></div>
     </section>
 </main>
-<!-- <h1>Choose a Hike:</h1>
-    {% for hike in hikes %}
-        <ul><a id = hike href = '' >Trail Name: {{hike.hike_name}} Length : {{hike.length}} Difficulty: {{hike.difficulty_rating}} Average User Rating: {{hike.avg_rating}}</a></ul>
-    {% endfor %} -->
+    <!-- <script id= 'coordinates'>
+        $.get('/hikes', {lat:coordinates[0], lng:coordinates[1]})
+    </script> -->
+    <!-- {% for hike in hikes %}
+        <ul><a id = hike href = '' >{{hike.coordinates}}</a></ul>
+    {% endfor %}  -->
 {% endblock %}
+

@@ -113,8 +113,22 @@ def hikes():
     chosen_national_park = request.args.get('national_park')
 
     hikes = crud.get_hikes(chosen_national_park)
+    
+    coordinates = crud.get_hikes(chosen_national_park)
 
-    return render_template('hikes-newhike.html', national_park=chosen_national_park, hikes=hikes)
+    char_to_remove = "}lnglat{: '"
+
+    
+    for coordinate in coordinates:
+        coord = coordinate.coordinates
+        for char in char_to_remove:
+            coord = coord.replace(char,"")
+        hike_coord = coord.split(",")
+
+    lat = hike_coord[0]
+    lng = hike_coord[1]
+
+    return render_template('hikes-newhike.html', hikes=hikes, lat=lat, lng=lng)
 
 
 # @app.route('/map')
