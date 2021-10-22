@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Hike Details {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/maps.css"/>
+
+    <script src="/static/js/map.js"></script>
+    <script
+        async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNt2Nea-LEziQB8l1cISuuz3Fkc8eZ7A&callback=initMap">
+    </script>
+{% endblock %}
+
+{% block body %} 
+<main>
+    <section class="map">
+      <div id="map" data-lng={{coordinates['lng']}} data-lat={{coordinates['lat']}}></div>
+    </section>
+</main>
+<div>
+<h1>Hike Details:</h1>
+    {% for hike in hike_details %}
+        <ul>Trail Name: {{hike.hike_name}} Length : {{hike.length}}ft Difficulty Rating (out of 5): {{hike.difficulty_rating}}    Average User Rating: {{hike.avg_rating}} stars</ul>
+    {% endfor %}
+</div>
+{% endblock %}

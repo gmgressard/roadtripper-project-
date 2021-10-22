@@ -114,26 +114,20 @@ def hikes():
 
     hikes = crud.get_hikes(chosen_national_park)
     
-    coordinates = crud.get_hikes(chosen_national_park)
-
-    char_to_remove = "}lnglat{: '"
-
-    
-    for coordinate in coordinates:
-        coord = coordinate.coordinates
-        for char in char_to_remove:
-            coord = coord.replace(char,"")
-        hike_coord = coord.split(",")
-
-    lat = hike_coord[0]
-    lng = hike_coord[1]
-
-    return render_template('hikes-newhike.html', hikes=hikes, lat=lat, lng=lng)
+    return render_template('hikes-newhike.html', hikes=hikes)
 
 
-# @app.route('/map')
-# def map():
-#     return render_template('maps.html')
+@app.route('/hike/<hike_name>')
+def hike(hike_name):
+    """display details and map of hike"""
+
+    hike_details = crud.get_hike_details(hike_name)
+
+    coordinates = crud.get_coord(hike_name)
+    print(coordinates)
+    print("*******************")
+  
+    return render_template('hike-newhike.html', hike_details=hike_details, coordinates=coordinates)
 
 
 @app.route('/savetrip')
@@ -141,7 +135,6 @@ def save_hike():
     """save trip to user id and view on past hikes"""
 
     return render_template(saved-hikes.html)    
-
 
 
 

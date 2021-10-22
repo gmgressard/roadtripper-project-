@@ -7,11 +7,11 @@ function initMap() {
     console.log($('#map').data())
     
     const natParkCoord = {
-        lng: $('#map').data().lng,
-        lat: $('#map').data().lat
+        lng: parseFloat($('#map').attr('data-lng')),
+        lat: parseFloat($('#map').attr('data-lat'))
     };
 
-    console.log(natParkCoord)
+    console.log(typeof natParkCoord.lng)// returns string
 
     const basicMap = new google.maps.Map(document.querySelector('#map'), {
         center: natParkCoord,
@@ -24,4 +24,3 @@ function initMap() {
         map: basicMap
     })
 };
-

@@ -2,26 +2,14 @@
 {% block title %} Hikes {% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="/static/css/maps.css"/>
-
-    <script src="/static/js/map.js"></script>
-    <script
-        async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNt2Nea-LEziQB8l1cISuuz3Fkc8eZ7A&callback=initMap">
-    </script>
+Choose a Hike
 {% endblock %}
 
 {% block body %} 
-<main>
-    <section class="map">
-      <div id="map" data-lng={{lng}} data-lat={{lat}}></div>
-    </section>
-</main>
-    <!-- <script id= 'coordinates'>
-        $.get('/hikes', {lat:coordinates[0], lng:coordinates[1]})
-    </script> -->
-    <!-- {% for hike in hikes %}
-        <ul><a id = hike href = '' >{{hike.coordinates}}</a></ul>
-    {% endfor %}  -->
+
+    {% for hike in hikes %}
+        <ul><a href = '/hike/{{hike.hike_name}}' >Trail Name: {{hike.hike_name}} Length : {{hike.length}}ft </a></ul>
+    {% endfor %}
+
 {% endblock %}
 

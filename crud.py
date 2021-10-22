@@ -76,14 +76,32 @@ def get_hikes(national_park):
     
     return national_parks
 
-# def get_coord(hike_name):
-#     """Get coordinates for hike"""
 
-#     coord_list = []
+def get_hike_details(hike_name):
+    """Get details for hike"""
 
-#     coordinates = HikeInfo.query.filter_by(hike_name=hike_name).all()
+    hike_details = HikeInfo.query.filter_by(hike_name=hike_name).all()
 
-#     return coordinates
+    return hike_details
+
+
+def get_coord(hike_name):
+
+    coordinates = HikeInfo.query.filter_by(hike_name=hike_name).all()
+
+    char_to_remove = "}lnglat{: '"
+    
+    for coordinate in coordinates:
+        coord = coordinate.coordinates
+        for char in char_to_remove:
+            coord = coord.replace(char, "")
+            hike_coord = coord.split(",")
+            lat = hike_coord[0]
+            lng = hike_coord[1]
+
+        return {'lat':lat,'lng':lng}
+
+        
 
 
 def save_hike(date):
