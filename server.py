@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, flash
 from model import connect_to_db
 import crud, model
+import datetime
 
 
 from jinja2 import StrictUndefined #gives errors for undefined variables 
@@ -14,6 +15,7 @@ app.secret_key = '^$hgj%^#^4#5&%34$#&%$w2H*5n3'
 @app.route('/')
 def home():
     """login page"""
+
     return render_template("index.html")
 
 
@@ -130,17 +132,33 @@ def hike(hike_name):
     return render_template('hike-newhike.html', hike_details=hike_details, coordinates=coordinates)
 
 
-@app.route('/savetrip')
+@app.route('/savehike', methods=['GET', 'POST'])
 def save_hike():
     """save trip to user id and view on past hikes"""
 
-    return render_template(saved-hikes.html)    
+    logged_in_user = session.get("user_id")
+
+    save_hike_id = request.form.get("hike_id")
+    print(save_hike_id)
+    print("***************************")
+
+    datetime_object = datetime.datetime.now()
+
+    save_hike = crud.save_hike(save_hike_id, logged_in_user, datetime_object)
+
+    if logged_in_user is None:
+        flash('Please log in to save hike')
+    else:
+        view_saved_hikes = crud.show_saved_hikes(logged_in_user)
+
+    return render_template('saved-hikes.html', save_hike_id=save_hike_id, logged_in_user=logged_in_user, view_saved_hikes=view_saved_hikes)    
 
 
 
-# @app.route('/pasthikes')
-# def view_past_hikes():
-#     return render_template('past-hike.html')
+
+@app.route('/savedhikes')
+def view_past_hikes():
+    return render_template('saved-hikes.html')
 
 
 # @app.route('/logout')

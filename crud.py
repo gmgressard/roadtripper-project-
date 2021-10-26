@@ -21,6 +21,12 @@ def get_user(username,password):
     return user
 
 
+def get_user_by_id(user_id):
+    """get user by id"""
+
+    return User.query.get(user_id)
+
+
 def create_hike(hike_name,coordinates,state,city,national_park,length,difficulty_rating,avg_rating):
     """create and return a hike"""
 
@@ -102,27 +108,24 @@ def get_coord(hike_name):
         return {'lat':lat,'lng':lng}
 
         
+def save_hike(hike_id,user_id,date):
+    """save hikes"""
 
+    save_hike_info = PastHike(hike_id=hike_id, user_id=user_id, date=date)
 
-def save_hike(date):
-    """look at past hike"""
-
-    past_hike_info = PastHike(date=date)
-
-    db.session.add(past_hike_info)
+    db.session.add(save_hike_info)
     db.session.commit()
 
-    return past_hike_info
+    return save_hike_info
 
 
-# def make_planned_hike():
+def show_saved_hikes(user_id):
+    """view saved hikes"""
 
-#     planned_hike = PlannedHike()
+    saved_hikes = PastHike.query.filter_by(user_id=user_id).all()
 
-#     db.session.add(planned_hike)
-#     db.session.commit()
+    return saved_hikes
 
-#     return planned_hike
 
 
 

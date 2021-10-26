@@ -11,4 +11,5 @@ main {
     width: 80%;
     height: 80%;
     position: fixed;
+    margin: 1em;
 }

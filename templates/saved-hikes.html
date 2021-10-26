@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Saved Hikes {% endblock %}
+
+{% block head %}
+    <h1>Favorite Hikes</h1>
+{% endblock %}
+
+{% block body %} 
+    {% for hike in view_saved_hikes %}
+        <li>{{hike}}</li>
+    {% endfor %}
+{% endblock %}

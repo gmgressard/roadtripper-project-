@@ -17,10 +17,16 @@
       <div id="map" data-lng={{coordinates['lng']}} data-lat={{coordinates['lat']}}></div>
     </section>
 </main>
-<div>
-<h1>Hike Details:</h1>
-    {% for hike in hike_details %}
-        <ul>Trail Name: {{hike.hike_name}} Length : {{hike.length}}ft Difficulty Rating (out of 5): {{hike.difficulty_rating}}    Average User Rating: {{hike.avg_rating}} stars</ul>
-    {% endfor %}
-</div>
+<form action='/savehike' method='POST'>
+    <div> 
+        <h1>Hike Details:</h1>
+            {% for hike in hike_details %}
+                <p><h3>Trail Name: {{hike.hike_name}}</h3></p>
+                <h3>Length : {{hike.length}}ft | Difficulty Rating (out of 5): {{hike.difficulty_rating}}   | Average User Rating: {{hike.avg_rating}} stars</h3>
+                <input hidden name='hike_id' value='{{hike.hike_id}}'></input>
+            <button type='submit'>Save to Profile</button>
+            {% endfor %}
+    </div>
+</form>
+
 {% endblock %}
