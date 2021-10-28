@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
 {% block title %} Title {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="/static/css/button.css"/>
+{% endblock %}
 
 {% block body %} 
-    <h1 id= intro>Let's Find Your Next Adventure</h1> 
-    
+    <ul>
+        <button id='logout' action='/logout'>Logout</button>
+    </ul>
+
+    <h1 id= intro style='text-align:center'>Let's Find Your Next Adventure</h1> 
     <div>
-        <form action = '/savedhikes'>
+        <form id='button' action = '/savedhikes'>
             <button>Past Hikes</button>
-        </form>
-        <form action = '/newhike'>
+        </form><br>
+        <form id='button' action = '/newhike'>
             <button>Find A New Hike</button>
         </form>
+    <!-- <form>
+        <button>User Info</button>
+    </form> -->
     </div>
 
 {% endblock %}
-

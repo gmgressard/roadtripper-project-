@@ -2,14 +2,24 @@ from flask import Flask, render_template, request, session, redirect, flash
 from model import connect_to_db
 import crud, model
 import datetime
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
+
+
 
 
 from jinja2 import StrictUndefined #gives errors for undefined variables 
-
-
 app = Flask(__name__)  
-
 app.secret_key = '^$hgj%^#^4#5&%34$#&%$w2H*5n3'
+
+login_manager = LoginManager()
+# login_manager.login_view = 'auth.login'
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    """load user needed for flask login ext"""
+    return crud.get_user_by_id(int(user_id))
 
 
 @app.route('/')
@@ -20,26 +30,24 @@ def home():
 
 
 @app.route('/login', methods=['POST','GET'])
-def login_user():
+def login():
     """login page"""
-    #get username and password input
-    user = request.form['username']
+
+    username = request.form['username']
     password = request.form['password']
 
-    #validate that it is in db
-    user = crud.get_user(username=user,password=password) 
-    print(user)
+    user = crud.get_user(username=username, password=password)
 
-    #validate username and password are connected 
-    #create session
-    #login to profile 
+    if current_user.is_authenticated:
+        return redirect('/profile')
+
     if user:
-        session["user_id"] = user.user_id
-        session["username"] = user.username 
-        return redirect("/profile")
-    else: 
-        flash("No user found, please create account")
-        return render_template("index.html")
+        login_user(user)
+        flash('you aer logged in')
+        return redirect('/profile')
+
+    flash('invalid login')
+    return redirect('/')
 
 
 @app.route('/profile', methods=['GET','POST'])
@@ -49,12 +57,11 @@ def homepage():
    #if yes, show profile 
    #if no, go to login page 
     
-    if 'user_id' in session: #key user id in session dic line 32
+    if current_user.is_authenticated:
         return render_template('profile.html')
     else:
-        flash('You are not logged in.')
         return redirect('/')
-
+   
 
 @app.route('/register')
 def registration():
@@ -88,6 +95,7 @@ def create_new_user():
 
 
 @app.route('/newhike')
+@login_required
 def create_new_hike():
     """list states > NP"""
     
@@ -97,6 +105,7 @@ def create_new_hike():
 
 
 @app.route('/nationalparks')
+@login_required
 def national_parks():
     """get national parks from state"""
     
@@ -109,6 +118,7 @@ def national_parks():
     
 
 @app.route('/hikes')
+@login_required
 def hikes():
     """get hikes from national park"""
 
@@ -120,6 +130,7 @@ def hikes():
 
 
 @app.route('/hike/<hike_name>')
+@login_required
 def hike(hike_name):
     """display details and map of hike"""
 
@@ -133,10 +144,13 @@ def hike(hike_name):
 
 
 @app.route('/savehike', methods=['GET', 'POST'])
+@login_required
 def save_hike():
     """save trip to user id and view on past hikes"""
 
-    logged_in_user = session.get("user_id")
+    logged_in_user = current_user.user_id
+    print(logged_in_user)
+    print("************************")
 
     save_hike_id = request.form.get("hike_id")
     print(save_hike_id)
@@ -154,17 +168,23 @@ def save_hike():
     return render_template('saved-hikes.html', save_hike_id=save_hike_id, logged_in_user=logged_in_user, view_saved_hikes=view_saved_hikes)    
 
 
-
-
 @app.route('/savedhikes')
+@login_required
 def view_past_hikes():
-    return render_template('saved-hikes.html')
+    return redirect('/savehike')
 
 
-# @app.route('/logout')
-# def logout():
-#     session.pop('user', None)
-#     return redirect('/login')
+@app.route('/logout')
+@login_required
+def logout():
+    """log user out"""
+
+    logout_user()
+    flash('You are logged out')
+
+    return redirect('/')
+
+
 
 
 

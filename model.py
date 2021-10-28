@@ -5,10 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 from datetime import datetime
 
+from flask_login import UserMixin
+
 db = SQLAlchemy()
 
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     """User information"""
 
     __tablename__="users"
@@ -22,6 +24,15 @@ class User(db.Model):
     fname = db.Column(db.String(30))
     lname = db.Column(db.String(30))
     email = db.Column(db.String(40))
+
+    def get_id(self):
+        return self.user_id
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True 
 
     def __repr__(self):
         """Show user info"""
