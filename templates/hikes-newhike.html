@@ -2,13 +2,18 @@
 {% block title %} Hikes {% endblock %}
 
 {% block head %}
-Choose a Hike
+<link rel="stylesheet" href="/static/css/nav.css"/>
+<link rel="stylesheet" href="/static/css/button.css"/>
+
+<div class="topnav">
+    <a class="active" href='/logout'>Logout</a>
+</div>
 {% endblock %}
 
 {% block body %} 
-
+  <h1>Choose A Hike:</h1>
     {% for hike in hikes %}
-        <ul><a href = '/hike/{{hike.hike_name}}' >Trail Name: {{hike.hike_name}} Length : {{hike.length}}ft </a></ul>
+        <ul><a id='hikes' href = '/hike/{{hike.hike_name}}' >Trail Name: {{hike.hike_name}} Length : {{hike.length}}ft </a></ul>
     {% endfor %}
 
 {% endblock %}

@@ -2,14 +2,17 @@
 {% block title %} Title {% endblock %}
 
 {% block head %}
+
+<link rel="stylesheet" href="/static/css/nav.css"/>
 <link rel="stylesheet" href="/static/css/button.css"/>
+
+<div class="topnav">
+    <a class="active" href='/logout'>Logout</a>
+</div>
+
 {% endblock %}
 
 {% block body %} 
-    <ul>
-        <button id='logout' action='/logout'>Logout</button>
-    </ul>
-
     <h1 id= intro style='text-align:center'>Let's Find Your Next Adventure</h1> 
     <div>
         <form id='button' action = '/savedhikes'>

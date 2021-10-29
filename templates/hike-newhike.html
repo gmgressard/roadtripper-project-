@@ -2,16 +2,28 @@
 {% block title %} Hike Details {% endblock %}
 
 {% block head %}
+
     <link rel="stylesheet" href="/static/css/maps.css"/>
+    <link rel="stylesheet" href="/static/css/nav.css"/>
+    <link rel="stylesheet" href="/static/css/button.css"/>
 
     <script src="/static/js/map.js"></script>
     <script
         async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNt2Nea-LEziQB8l1cISuuz3Fkc8eZ7A&callback=initMap">
     </script>
+
+    <div class='topnav'>
+        <a class='active' href='/logout'>Logout</a>
+        <a href='/profile'>Home</a>
+        <a href='/hikes'>Hikes</a>
+        <a href='/nationalparks'>National Parks</a>
+        <a href='/newhike'>States</a>
+    </div>
 {% endblock %}
 
 {% block body %} 
+
 <main>
     <section class="map">
       <div id="map" data-lng={{coordinates['lng']}} data-lat={{coordinates['lat']}}></div>

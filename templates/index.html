@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block title %} Log In {% endblock %}
 
-{% block body %} 
-    <h1 style='text-align:center' id= intro >Welcome to RoadTripper!</h1><br>
+{% block body %}
+    
+    <!-- <h1 style='text-align:center' id= intro >Welcome to RoadTripper!</h1><br><br> -->
+    <img id='center' src="../static/img/RoadTripper.jpg" /><br>  
     <div style='text-align:center'>
         <form id ='login' action='/login' method='POST'> 
             <label><strong>Username:</strong></label><br>
@@ -11,8 +13,7 @@
             <input id= 'password' type='password' name='password'><br><br>
             <input type='submit' value='Login'><br><br>
             <a href='/register' style='color:black'>Create Account</a>
-        </form>
-        
+        </form> <br>
     </div>
 
 {% endblock %}

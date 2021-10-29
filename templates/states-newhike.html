@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 {% block title %} Hikes {% endblock %}
 
+{% block head %}
+
+<link rel="stylesheet" href="/static/css/nav.css"/>
+<link rel="stylesheet" href="/static/css/button.css"/>
+
+<div class="topnav">
+  <a class="active" href='/logout'>Logout</a>
+</div>
+
+{% endblock %}
+
 {% block body %} 
     <h1>Let's Find a Hike</h1> 
     <form action= '/nationalparks'>
-    <label for="state">Choose a state:</label>
+    <label for="state"><strong>Choose a state:</strong></label><br>
 
     <select name="state" id="state">
     {% for state in states %}
