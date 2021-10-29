@@ -127,10 +127,12 @@ def show_saved_hikes(user_id):
     return saved_hikes
 
 
-def change_username(user_id):
+def change_username(username, password):
     """change username"""
 
-    user = User.query.filter_by(username = username, password=password).first()
+    user = User(username=username,password=password)
+  
+    db.session.commit()
 
     return user
 

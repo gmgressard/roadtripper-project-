@@ -185,24 +185,50 @@ def logout():
     return redirect('/')
 
 
-@app.route('/updateprofile', methods=['POST', 'GET'])
+@app.route('/updateprofile', methods=['POST'])
 @login_required
 def update_user():
     """update user info"""
 
-    # logged_in_user = current_user.user_id
+    logged_in_user = crud.get_user_by_id(current_user.user_id)
+    print(logged_in_user)
 
-    # new_username = request.form['new_username']
-    # new_password = request.form['new_password']
+    new_username = request.form.get('new_username')
+    new_password = request.form.get('new_password')
+    print(new_username)
+    print("*********************************")
+    
+    logged_in_user.username = new_username
+    logged_in_user.password = new_password
+
+    new_user = crud.change_username(new_username, new_password)
+
+    flash('Username and password have been updated.')
+
+    return render_template('user-info.html')
+
+
+# @app.route('/changeusername', methods=['POST'])
+# @login_required 
+# def change_username():
+        
+#     logged_in_user = crud.get_user_by_id(current_user.user_id)
+
+#     new_username = request.form.get('new_username')
+#     new_password = request.form.get('new_password')
 
     
-    # new_username = user.username 
-    # new_password = user.password 
+#     logged_in_user.username = new_username
+#     logged_in_user.password = new_password
 
-    # flash('username and password updated')
+#     crud.change_username(new_username, new_password)
 
-    return render_template('user-info.html', current_user=current_user)
+#     new_user = crud.change_username(new_username, new_password)
 
+#     flash('Username and password have been updated.')
+    
+#     return redirect('/updateprofile', new_user=new_user)
+    
 
 
 

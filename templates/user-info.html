@@ -15,19 +15,24 @@
 {% endblock %}
 
 {% block body %}
+
+{% for message in get_flashed_messages() %}
+    <p>{{message}}</p>
+{% endfor %}
+
 <h1>Account Information</h1> 
 <div>
    <h3> Name: {{current_user.fname}} {{current_user.lname}} <br>
     Email: {{current_user.email}}</h3>
 </div>
-<!-- <div>
+<div>
     <h1> Update User Information</h1>
-    <form action='/updateprofile' id=updateuser  method="POST">
+    <form id='updateuser' method="POST">
         <label>Update Username:</label><br>
         <input id= 'new_username' type="text" name='new_username'><br><br>
         <label>Update Password:</label><br>
         <input id='new_password' type="password" name='new_password'><br><br>
         <input type="submit" value="Update Account">
     </form>
-</div> -->
+</div>
 {% endblock %}
