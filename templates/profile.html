@@ -8,11 +8,13 @@
 
 <div class="topnav">
     <a class="active" href='/logout'>Logout</a>
+    <a href='/updateprofile'>Account Info</a>
 </div>
 
 {% endblock %}
 
 {% block body %} 
+    <h1 style='text-align:center'>Welcome Back {{current_user.fname.title()}}!</h1>
     <h1 id= intro style='text-align:center'>Let's Find Your Next Adventure</h1> 
     <div>
         <form id='button' action = '/savedhikes'>
@@ -21,9 +23,9 @@
         <form id='button' action = '/newhike'>
             <button>Find A New Hike</button>
         </form>
-    <!-- <form>
-        <button>User Info</button>
-    </form> -->
-    </div>
+
+    </div><br><br>
+
+    <img id='center' width='400em' src="../static/img/RoadTripper.jpg" /><br>
 
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} User Info {% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet" href="/static/css/nav.css"/>
+<link rel="stylesheet" href="/static/css/button.css"/>
+
+<div class="topnav">
+    <a class="active" href='/logout'>Logout</a>
+    <a href='/profile'>Home</a>
+    <a href='/newhike'>Find New Hike</a>
+    <a>RoadTripper </a>
+</div>
+{% endblock %}
+
+{% block body %}
+<h1>Account Information</h1> 
+<div>
+   <h3> Name: {{current_user.fname}} {{current_user.lname}} <br>
+    Email: {{current_user.email}}</h3>
+</div>
+<!-- <div>
+    <h1> Update User Information</h1>
+    <form action='/updateprofile' id=updateuser  method="POST">
+        <label>Update Username:</label><br>
+        <input id= 'new_username' type="text" name='new_username'><br><br>
+        <label>Update Password:</label><br>
+        <input id='new_password' type="password" name='new_password'><br><br>
+        <input type="submit" value="Update Account">
+    </form>
+</div> -->
+{% endblock %}

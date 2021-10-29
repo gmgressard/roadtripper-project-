@@ -127,6 +127,13 @@ def show_saved_hikes(user_id):
     return saved_hikes
 
 
+def change_username(user_id):
+    """change username"""
+
+    user = User.query.filter_by(username = username, password=password).first()
+
+    return user
+
 
 
 if __name__ == '__main__':

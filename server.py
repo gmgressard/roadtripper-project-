@@ -60,7 +60,7 @@ def homepage():
     if current_user.is_authenticated:
         return render_template('profile.html')
     else:
-        return redirect('/')
+        return redirect('/', current_user=current_user)
    
 
 @app.route('/register')
@@ -184,6 +184,24 @@ def logout():
 
     return redirect('/')
 
+
+@app.route('/updateprofile', methods=['POST', 'GET'])
+@login_required
+def update_user():
+    """update user info"""
+
+    # logged_in_user = current_user.user_id
+
+    # new_username = request.form['new_username']
+    # new_password = request.form['new_password']
+
+    
+    # new_username = user.username 
+    # new_password = user.password 
+
+    # flash('username and password updated')
+
+    return render_template('user-info.html', current_user=current_user)
 
 
 

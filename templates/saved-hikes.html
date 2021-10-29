@@ -2,11 +2,25 @@
 {% block title %} Saved Hikes {% endblock %}
 
 {% block head %}
+
+<link rel="stylesheet" href="/static/css/nav.css"/>
+<link rel="stylesheet" href="/static/css/button.css"/>
+
+<div class="topnav">
+    <a class="active" href='/logout'>Logout</a>
+    <a href='/profile'>Home</a>
+    <a href='/newhike'>Find New Hike</a>
+    <!-- <img id='right' width='100em' src="../static/img/RoadTripper.jpg" /> -->
+</div>
+
     <h1>Favorite Hikes</h1>
+    <!-- <form action='/profile'>
+        <input type='submit' value='Go to Homepage' />
+    </form> -->
 {% endblock %}
 
 {% block body %} 
     {% for hike in view_saved_hikes %}
-        <li>{{hike}}</li>
+        <ol>{{hike.hike.state}} {{hike.hike.national_park}} {{hike.hike.hike_name}}</ol>
     {% endfor %}
 {% endblock %}

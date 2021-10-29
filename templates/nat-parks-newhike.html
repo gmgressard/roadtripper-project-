@@ -8,15 +8,15 @@
 
 <div class="topnav">
   <a class="active" href='/logout'>Logout</a>
+  <a href='/profile'>Home</a>
+  <a>Let's Find a Hike </a>
 </div>
 
 {% endblock %}
 
 {% block body %} 
-
-    <h1>Let's Find a Hike</h1> 
     <form action= '/hikes'>
-    <label for="national_park">Choose a National Park to Visit:</label>
+    <label for="national_park"><strong><h2>Choose a National Park to Visit:</h2></strong></label>
 
     <select name="national_park" id="national_park">
     {% for national_park in national_parks %}
