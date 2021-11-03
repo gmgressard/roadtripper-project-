@@ -13,6 +13,13 @@ RoadTripper is an app for the hike enthustist. This app will let the user can se
 - JQuery
 - AJAX
 
+## API Used 
+- Maps JavaScript API
+
+## Dataset Used
+- AllTrails : Every trail in National Park Service gathered from AllTrails
+    - *https://www.kaggle.com/planejane/national-park-trails*
+
 
 ## How to install
 
