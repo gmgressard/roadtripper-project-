@@ -8,6 +8,8 @@ RoadTripper is an app for the hike enthustist. This app will let the user can se
 
 - Python
 - JavaScript
+- Flask
+- SQLAlchemy 
 - HTML
 - CSS
 - JQuery
