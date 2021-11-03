@@ -42,7 +42,7 @@
     <h1>Favorite Hikes</h1>
   </div>
 
-  <div id='background'>
+  <div id='background' class='center'>
     {% for hike in view_saved_hikes %}
         <ol>{{hike.hike.state}} {{hike.hike.national_park}} {{hike.hike.hike_name}}</ol>
     {% endfor %}
