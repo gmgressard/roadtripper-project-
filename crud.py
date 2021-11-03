@@ -17,7 +17,7 @@ def create_user(username,password,fname,lname,email):
 def get_user(username,password):
     """check if user in db"""
 
-    user = User.query.filter_by(username = username, password=password).first() #one or first
+    user = User.query.filter_by(username = username, password=password).first() 
     return user
 
 

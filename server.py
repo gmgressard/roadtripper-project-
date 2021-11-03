@@ -12,7 +12,6 @@ app = Flask(__name__)
 app.secret_key = '^$hgj%^#^4#5&%34$#&%$w2H*5n3'
 
 login_manager = LoginManager()
-# login_manager.login_view = 'auth.login'
 login_manager.init_app(app)
 
 
@@ -43,10 +42,8 @@ def login():
 
     if user:
         login_user(user)
-        flash('you aer logged in')
         return redirect('/profile')
 
-    flash('invalid login')
     return redirect('/')
 
 
@@ -87,7 +84,6 @@ def create_new_user():
     # #if not, add user to db and go back to log in
 
     if db_user is not None:
-        flash('Already in database')
         return redirect('/')
     else: 
         user = crud.create_user(username=user, password=password, fname=fname, lname=lname, email=email)
@@ -112,7 +108,6 @@ def national_parks():
     chosen_state = request.args.get('state')
 
     national_parks = crud.get_national_parks(chosen_state)
-    
 
     return render_template('nat-parks-newhike.html', state=chosen_state, national_parks=national_parks)
     
@@ -137,8 +132,6 @@ def hike(hike_name):
     hike_details = crud.get_hike_details(hike_name)
 
     coordinates = crud.get_coord(hike_name)
-    print(coordinates)
-    print("*******************")
   
     return render_template('hike-newhike.html', hike_details=hike_details, coordinates=coordinates)
 
@@ -149,12 +142,8 @@ def save_hike():
     """save trip to user id and view on past hikes"""
 
     logged_in_user = current_user.user_id
-    print(logged_in_user)
-    print("************************")
 
     save_hike_id = request.form.get("hike_id")
-    print(save_hike_id)
-    print("***************************")
 
     datetime_object = datetime.datetime.now()
 
@@ -213,29 +202,8 @@ def update_user():
 
     flash('Username and password have been updated.')
 
-    return render_template('user-info.html')
+    return redirect('/accountinfo')
 
-
-# @app.route('/changeusername', methods=['POST'])
-# @login_required 
-# def change_username():
-        
-#     logged_in_user = crud.get_user_by_id(current_user.user_id)
-
-#     new_username = request.form.get('new_username')
-#     new_password = request.form.get('new_password')
-
-    
-#     logged_in_user.username = new_username
-#     logged_in_user.password = new_password
-
-#     crud.change_username(new_username, new_password)
-
-#     new_user = crud.change_username(new_username, new_password)
-
-#     flash('Username and password have been updated.')
-    
-#     return redirect('/updateprofile', new_user=new_user)
     
 
 

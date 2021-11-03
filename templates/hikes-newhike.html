@@ -18,7 +18,7 @@
             <a class="nav-link active" aria-current="page" href="/profile">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/updateprofile">Update Account Info</a>
+            <a class="nav-link active" aria-current="page" href="/accountinfo">Update Account Info</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/savehike">View Saved Hikes</a>
@@ -43,7 +43,6 @@
 </div>
 
     {% for hike in hikes %}
-        <!-- <ul><a id='hikes' href = '/hike/{{hike.hike_name}}' >Trail Name: {{hike.hike_name}} Length : {{hike.length / 5280 }} miles </a></ul> -->
         <ul><a id='hikes' href = '/hike/{{hike.hike_name}}' type="button" class="btn btn-outline-dark">Trail Name: {{hike.hike_name}} Length : {{hike.length }} ft</a></ul>
     {% endfor %}
 

@@ -8,26 +8,12 @@
 
 {% block body %} 
     <h1 id= 'intro'>Create New Account</h1> 
-    <!-- <div>
-        <form id=register action="/createuser" method="POST">
-            <label>Username:</label><br>
-            <input id= username type="text" name="username"><br><br>
-            <label>Email:</label><br>
-            <input id=email type="email" name="email"><br><br>
-            <label>Password:</label><br>
-            <input id=password type="password" name="password"><br><br>
-            <label>First Name:</label><br>
-            <input id=fname type="text" name="fname"><br><br>
-            <label>Last Name:</label><br>
-            <input id=lname type="text" name="lname"><br><br>
-            <input type="submit" value="Create Account">
-        </form>
-    </div> -->
 
-    <div id='background'>
-    <form action="/createuser" method="POST" id='register'>
+    <div style='text-align:center'>
+    <form id='login' action="/createuser" method="POST">
         <div class="form-row">
-          <div class="col-md-4 mb-3">
+          
+          <div class="form-group">
             <label id='label' for="fname">First name</label>
             <input id='fname' name='fname' type="text" class="form-control" placeholder="First name" value="" required>
             <div class="valid-tooltip">
@@ -35,7 +21,8 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          
+          <div class="form-group">
             <label id='label' for="lname">Last name</label>
             <input id='lname' name='lname' type="text" class="form-control" placeholder="Last name" value="" required>
             <div class="valid-tooltip">
@@ -43,37 +30,33 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          
+          <div class="form-group">
             <label id='label' for="username">Username</label>
             <div class="input-group">
               <input id='username' name='username' type="text" class="form-control" placeholder="Username" required>
             </div>
           </div>
-        
-
     
-          <div class="col-md-4 mb-3">
+          
+          <div class="form-group">
             <label id='label' for="password">Password</label>
               <input id='password' name='password' type="password" class="form-control" placeholder="Password" value="" required>
           </div>
         
-
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
+          <div class="form-group">
             <label id='label' for="email">Email</label>
             <input id='email' name='email' type="email" class="form-control" placeholder="Email" required>
             <div class="invalid-tooltip">
               Please enter email
-            </div>
+            </div><br><br>
+            <button class="btn btn-dark" type="submit">Submit form</button>
           </div>
+
         </div>
-
-        <button class="btn btn-dark" type="submit">Submit form</button>
-
-      </form><br><br>
-
-      </div>
-
+    </form><br>
       <a href='/' style='color:black'>Go Back to Sign In Page </a>
-    
+    </div>
+   
+
 {% endblock %}

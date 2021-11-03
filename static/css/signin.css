@@ -23,15 +23,8 @@
     padding: 5px;
 }
 
-#background {
-    margin: auto;
-    width: 40%;
-    border: 3px solid rgb(0, 0, 0);
-    background-color: rgba(75, 73, 73, 0.3);
-    padding: 10px;
-    font-weight: 500;
-    font-size: large;
-    color: whitesmoke;
-    text-align: center;
-    border-radius:25px;
-}
+/* #register {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+} */
