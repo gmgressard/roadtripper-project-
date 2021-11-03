@@ -17,17 +17,17 @@ RoadTripper is an app for the hike enthustist. This app will let the user can se
 ## How to install
 
 - Copy link from GitHub repository
-- In VS code use command git* clone* https://github.com/gmgressard/roadtripper-project-.git
+- In VS code use command *git* *clone* *https://github.com/gmgressard/roadtripper-project-.git*
 - Create virtual environment using commands:  
-    - virtualenv* env
-    - source *env/bin/activate
-    - pip3* install *-r* requirements
-- Run python3*server.py
+    - *virtualenv* *env*
+    - *source* *env/bin/activate*
+    - *pip3* *install* *-r* *requirements*
+- Run *python3* *server.py*
 - Open browser: http://localhost:5000/
 
 ## How to use 
 
-- User can look at favorite*hikes or find*a*new*hike from their homepage
+- User can look at *favorite* *hikes* or *find* *new* *hike* from their homepage
 
     ![Homepage](./static/img/home.png)
 
