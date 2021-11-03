@@ -1,0 +1,20 @@
+#title {
+    color:whitesmoke;
+    text-align:center
+}
+
+ol {
+    color: black;
+    font-size: large;
+}
+
+#background {
+    background-color: rgba(255, 255, 255, 0.105);
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    width: 40%;
+    margin-inline: 28% 2%;
+    box-shadow: 0 0 10px 1px rgb(172, 173, 174);
+    border-radius:25px;
+}

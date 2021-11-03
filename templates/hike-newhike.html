@@ -4,8 +4,8 @@
 {% block head %}
 
     <link rel="stylesheet" href="/static/css/maps.css"/>
-    <link rel="stylesheet" href="/static/css/nav.css"/>
-    <link rel="stylesheet" href="/static/css/button.css"/>
+    <link rel="stylesheet" href="/static/css/button.css"/> 
+    <link rel="stylesheet" href="/static/css/hike.css"/> 
 
     <script src="/static/js/map.js"></script>
     <script
@@ -13,33 +13,66 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNt2Nea-LEziQB8l1cISuuz3Fkc8eZ7A&callback=initMap">
     </script>
 
-    <div class='topnav'>
-        <a class='active' href='/logout'>Logout</a>
-        <a href='/profile'>Home</a>
-        <a href='/hike'>Hikes</a>
-        <a href='/nationalparks'>National Parks</a>
-        <a href='/newhike'>States</a>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">RoadTripper</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/profile">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/updateprofile">Update Account Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/savehike">View Saved Hikes</a>
+              </li>
+            </ul>
+      
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
 {% endblock %}
 
 {% block body %} 
 
+<div id="map" data-lng={{coordinates['lng']}} data-lat={{coordinates['lat']}}></div>
 
-    
-      <div id="map" data-lng={{coordinates['lng']}} data-lat={{coordinates['lat']}}></div>
-    
+<br>
+<div id='title'>
+  <h1>Hike Details:</h1>
+</div>
 
+<div><br>
+  <form action='/savehike' method='POST'>
 
-<div>
-<form action='/savehike' method='POST'>
-        <h1>Hike Details:</h1>
-            {% for hike in hike_details %}
-                <p><h3>Trail Name: {{hike.hike_name}}</h3></p>
-                <h3>Length : {{hike.length}}ft | Difficulty Rating (out of 5): {{hike.difficulty_rating}}   | Average User Rating: {{hike.avg_rating}} stars</h3>
-                <input hidden name='hike_id' value='{{hike.hike_id}}'></input>
-            {% endfor %}
-                <button type="submit" value="Save To Favorites" >Save</button>
-    </div>
-</form>
+    {% for hike in hike_details %}
+      <p><h3 id='trailname'>Trail Name: {{hike.hike_name}}</h3></p>
+          <h3 id='trail'>Length : {{hike.length}}ft | Difficulty Rating (out of 5): {{hike.difficulty_rating}}   | Average User Rating: {{hike.avg_rating}} stars</h3>
+          <input hidden name='hike_id' value='{{hike.hike_id}}'></input><br>
+    {% endfor %}
+          
+    <!-- <button id='button' type="submit" class="btn btn-dark btn-lg">Save To Favorites</button> -->
+
+    <button id='button' type='submit' class='btn btn-outline-danger'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+      </svg>
+      <strong>Save to Favorites</strong>
+      </button>
+
+  </form>
+</div>
+
 
 {% endblock %}

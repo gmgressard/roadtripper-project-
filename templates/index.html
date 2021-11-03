@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block title %} Log In {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="/static/css/signin.css"/>
+
+{% endblock %}
+
 {% block body %}
-    <!-- <h1 style='text-align:center' id= intro >Welcome to RoadTripper!</h1><br><br> -->
-    <div style='text-align:center'>
+    
+    <h1 style='text-align:center' id= 'intro' >Welcome to RoadTripper!</h1><br><br>
+    <!-- <div style='text-align:center'>
         <form id ='login' action='/login' method='POST'> 
             <label><strong>Username:</strong></label><br>
             <input id= 'username' type='text' name='username'><br><br>
@@ -12,7 +18,21 @@
             <input type='submit' value='Login'><br><br>
             <a href='/register' style='color:black'>Create Account</a>
         </form> <br>
-        <img id='center' width='400em' src="../static/img/RoadTripper.jpg" /><br>  
-    </div>
+    </div> -->
 
+    <div style='text-align:center'>
+    <form id ='login' action='/login' method='POST'>
+        <div class="form-group">
+          <label id = 'username' name='username' for="username">Username</label>
+          <input id='username' type='text' name='username' class="form-control" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="passord">Password</label>
+          <input id='password' name='password' type="password" class="form-control" placeholder="Password">
+        </div><br>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form><br>
+      <a href='/register' style='color:black'>New User? Create an Account Today! </a>
+    </div>
+    
 {% endblock %}

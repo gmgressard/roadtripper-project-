@@ -1,0 +1,13 @@
+#state {
+    background-color: #cdcdcd;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    font-size: 16px;
+    border: 2px, black;
+    cursor: pointer;
+  }
+
+#title {
+    color:whitesmoke;
+    text-align:center
+}

@@ -185,7 +185,15 @@ def logout():
     return redirect('/')
 
 
-@app.route('/updateprofile', methods=['POST'])
+@app.route('/accountinfo')
+@login_required
+def update_account():
+    """update user info"""
+
+    return render_template('user-info.html')
+
+
+@app.route('/updateprofile', methods=['POST', 'GET'])
 @login_required
 def update_user():
     """update user info"""

@@ -1,0 +1,37 @@
+#intro {
+    margin-top:50px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+#login {
+    margin: auto;
+    width: 40%;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgba(75, 73, 73, 0.3);
+    padding: 10px;
+    font-weight: 500;
+    font-size: large;
+    color: whitesmoke;
+    border-radius:25px;
+}
+
+#label {
+    color: whitesmoke;
+    font-weight: 400;
+    font-size: large;
+    padding: 5px;
+}
+
+#background {
+    margin: auto;
+    width: 40%;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgba(75, 73, 73, 0.3);
+    padding: 10px;
+    font-weight: 500;
+    font-size: large;
+    color: whitesmoke;
+    text-align: center;
+    border-radius:25px;
+}

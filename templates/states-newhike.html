@@ -3,26 +3,57 @@
 
 {% block head %}
 
-<link rel="stylesheet" href="/static/css/nav.css"/>
 <link rel="stylesheet" href="/static/css/button.css"/>
+<link rel="stylesheet" href="/static/css/state-newhike.css"/>
 
-<div class="topnav">
-  <a class="active" href='/logout'>Logout</a>
-</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">RoadTripper</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/updateprofile">Update Account Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/savehike">View Saved Hikes</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 {% endblock %}
 
 {% block body %} 
-    <h1>Let's Find a Hike</h1> 
-    <form action= '/nationalparks'>
-    <label for="state" ><strong><h2>Choose a state:</h2></strong></label>
+<br>
+  <div id='title'>
+    <h1>Let's Find a Hike</h1><br>
+  </div>
 
-    <select name="state" id="state">
-    {% for state in states %}
-      <option value='{{state}}'>{{state}}</option>
-    {% endfor %}  
-    <input type = "submit">
+    <form style='text-align:center' action= '/nationalparks'>
+      <div>
+        <label id='title'><h2>Choose a state:</h2></label><br><br>
+      </div>
+
+      <select name="state" id="state">
+        {% for state in states %}
+          <option value='{{state}}'>{{state}}</option>
+        {% endfor %}
+      <input class="btn btn-dark" type = "submit">
+      </select>
+      
     </form>
-    </select>
+
     
+  
 {% endblock %}

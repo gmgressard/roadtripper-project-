@@ -2,18 +2,49 @@
 {% block title %} Hikes {% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/css/nav.css"/>
-<link rel="stylesheet" href="/static/css/button.css"/>
 
-<div class="topnav">
-    <a class="active" href='/logout'>Logout</a>
-</div>
+<link rel="stylesheet" href="/static/css/button.css"/>
+<link rel="stylesheet" href="/static/css/hikes.css"/>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RoadTripper</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/updateprofile">Update Account Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/savehike">View Saved Hikes</a>
+          </li>
+        </ul>
+  
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 {% endblock %}
 
 {% block body %} 
-  <h1>Choose A Hike:</h1>
+<br>
+<div id='title'>
+  <h1>Choose A Hike:</h1><br>
+</div>
+
     {% for hike in hikes %}
-        <ul><a id='hikes' href = '/hike/{{hike.hike_name}}' >Trail Name: {{hike.hike_name}} Length : {{hike.length}}ft </a></ul>
+        <!-- <ul><a id='hikes' href = '/hike/{{hike.hike_name}}' >Trail Name: {{hike.hike_name}} Length : {{hike.length / 5280 }} miles </a></ul> -->
+        <ul><a id='hikes' href = '/hike/{{hike.hike_name}}' type="button" class="btn btn-outline-dark">Trail Name: {{hike.hike_name}} Length : {{hike.length }} ft</a></ul>
     {% endfor %}
 
 {% endblock %}

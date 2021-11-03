@@ -3,27 +3,49 @@
 
 {% block head %}
 
-<link rel="stylesheet" href="/static/css/nav.css"/>
-<link rel="stylesheet" href="/static/css/button.css"/>
+<link rel="stylesheet" href="/static/css/userinfo.css"/>
 
-<div class="topnav">
-    <a class="active" href='/logout'>Logout</a>
-    <a href='/profile'>Home</a>
-    <a href='/newhike'>Find New Hike</a>
-    <a>RoadTripper </a>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RoadTripper</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/updateprofile">Update Account Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/savehike">View Saved Hikes</a>
+          </li>
+        </ul>
+  
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 {% endblock %}
 
 {% block body %}
 
-{% for message in get_flashed_messages() %}
+<!-- {% for message in get_flashed_messages() %}
     <p>{{message}}</p>
-{% endfor %}
-
+{% endfor %} -->
+<div id='savedinner'>
 <h1>Account Information</h1> 
 <div>
    <h3> Name: {{current_user.fname}} {{current_user.lname}} <br>
-    Email: {{current_user.email}}</h3>
+    Email: {{current_user.email}} <br>
+    Username: {{current_user.username}}</h3>
 </div>
 <div>
     <h1> Update User Information</h1>
@@ -34,5 +56,6 @@
         <input id='new_password' type="password" name='new_password'><br><br>
         <input type="submit" value="Update Account">
     </form>
+</div>
 </div>
 {% endblock %}
