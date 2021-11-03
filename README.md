@@ -1,7 +1,7 @@
 
 # RoadTripper
 
-RoadTripper is an app for the hike enthustist. This app wil let the user can search and save hikes in National Parks to their user profile. 
+RoadTripper is an app for the hike enthustist. This app will let the user can search and save hikes in National Parks to their user profile. 
 
 
 ## Technolgies Used
@@ -17,11 +17,11 @@ RoadTripper is an app for the hike enthustist. This app wil let the user can sea
 ## How to install
 
 - Copy link from GitHub repository
-- In VS code use command git*clone*https://github.com/gmgressard/roadtripper-project-.git
+- In VS code use command git* clone* https://github.com/gmgressard/roadtripper-project-.git
 - Create virtual environment using commands:  
-    - virtualenv*env
-    - source*env/bin/activate
-    - pip3*install*-r*requirements
+    - virtualenv* env
+    - source *env/bin/activate
+    - pip3* install *-r* requirements
 - Run python3*server.py
 - Open browser: http://localhost:5000/
 
