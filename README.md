@@ -70,3 +70,5 @@ RoadTripper is an app for the hike enthustist. This app will let the user can se
 - Favorite a hike you want to do 
 
     ![FilterH](./static/img/hike.png)
+
+
