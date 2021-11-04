@@ -1,20 +1,11 @@
-.logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 15%;
-    border-radius:400px;
-    margin-top: 50px;
-    color: whitesmoke;
-  }
-
-/* footer {
+footer {
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
     height: 90px;
     color: whitesmoke;
+    margin-top: 10px;
   }
 
 #email {
@@ -29,4 +20,4 @@
     margin-right: 30px;
     margin-left: 30px;
     color: whitesmoke;
-  }  */
+  } 

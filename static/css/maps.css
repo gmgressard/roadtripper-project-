@@ -9,11 +9,12 @@ main {
   
 .map, #map {
     width: 80%;
-    height: 80%;
-    position: absolute;
-    top:350px;
+    height: 40%;
+    position: relative;
     left: 20px;
-    margin-left: 5em;
-    float:bottom;
-    border: 3px solid #000000;
+    bottom: 100px;
+    margin-left: 5em; 
+    margin-bottom:5em;  
+    border: 3px solid #000000; 
+    padding-bottom: 500px;
 }

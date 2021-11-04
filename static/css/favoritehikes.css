@@ -13,7 +13,7 @@ ol {
     text-align: center;
     width: 50%;
     box-shadow: 0 0 10px 1px rgb(172, 173, 174);
-    border-radius:25px;
+    /* border-radius:25px; */
 }
 
 .center {
@@ -22,3 +22,4 @@ ol {
     margin-right: auto;
     width: 20%;
   }
+
