@@ -8,11 +8,18 @@
   }
 
   footer {
-    text-align: center;
     padding: 3px;
     color: white;
   }
 
   a {
     color: rgb(176, 176, 176);
+  }
+
+  ul {
+    list-style: none;
+    text-decoration:none;
+    display:inline-block;  
+    position:relative;
+    margin-right: 25px;
   }
