@@ -47,7 +47,7 @@ def get_np_and_state():
 def get_states():
     """get all states"""
     states = db.session.query(HikeInfo.state).all()
-    
+    # print(type(states))
     states_set = set()
 
     for state in states:

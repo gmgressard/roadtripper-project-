@@ -6,15 +6,17 @@ RoadTripper is an app for the hike enthustist. This app will let the user can se
 
 ## Technologies Used
 
-- Python
-- JavaScript
+- Python 
+- JavaScript 
 - Flask
 - SQLAlchemy 
+- PostgreSQL
 - HTML
 - CSS
 - Bootstrap 
 - JQuery
 - AJAX
+- Jinja
 
 ## API Used 
 - Google Maps JavaScript API
